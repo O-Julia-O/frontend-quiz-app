@@ -1,13 +1,42 @@
 @font-face {
-    font-family: 'MyFont';
-    font-style: normal;         
+    font-family: 'Rubik';        
     src: url("../../assets/fonts/Rubik-VariableFont_wght.ttf");
     font-weight: 100 900;
+    font-style: normal;
 }
 
 @font-face {
-    font-family: 'MyFont';
-    font-style: normal;         
-    src: url("../../assets/fonts/Rubik-VariableFont_wght.ttf");
+    font-family: 'Rubik';    
+    src: url("../../assets/fonts/Rubik-Italic-VariableFont_wght.ttf");
     font-weight: 100 900;
+    font-style: italic;
+}
+
+:root {
+    --color-text: #313E51;
+}
+
+.text-preset-2-mobile-light {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 100;
+    font-size: 40px;
+    line-height: 100%;
+    word-spacing: 0;
+    color: var(--color-text);
+}
+
+.text-preset-2-mobile-medium {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+    word-spacing: 0;
+    color: var(--color-text);
+}
+
+.text-preset-5-mobile {
+    font-size: 14px;
+    line-height: 150%;
+    font-style: italic;
+    color: var(--color-text);
 }
