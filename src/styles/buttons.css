@@ -1,7 +1,5 @@
-quiz-menu__buttons {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 24px;
+.quiz-menu__buttons {
+    gap: 16px;
 }
 
 .button {
