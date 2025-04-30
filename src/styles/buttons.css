@@ -1,0 +1,52 @@
+quiz-menu__buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 24px;
+}
+
+.button {
+    display: flex;
+    background-color: white; /* Green */
+    text-align: left;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.button svg {
+    border-radius: 6px;
+    margin: 1rem;
+    padding: 5px;
+}
+
+.button .html-btn {
+    background-color: #FFF5ED; 
+}
+
+.button .css-btn{
+    background-color: #E0FDEF; 
+}
+
+.button .js-btn{
+    background-color: #EBF0FF; 
+}
+
+.button .access-btn{
+    background-color: #F6E7FF; 
+}
+
+.html-btn {
+    fill: #FF7E35;
+}
+
+.css-btn {
+    fill: #2FD887;
+}
+
+.js-btn {
+    fill: #306AFF;
+}
+
+.access-btn {
+    fill: #A729F5;
+}

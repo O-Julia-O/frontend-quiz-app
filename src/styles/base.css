@@ -90,8 +90,12 @@ body {
   flex-direction: row;
 }
 
-.flex-row {
+.flex-column {
   flex-direction: column;
+}
+
+.wrapper {
+  width: 100%;
 }
 
 /* QUIZ MENU */

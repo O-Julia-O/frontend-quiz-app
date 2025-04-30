@@ -34,6 +34,14 @@
     color: var(--color-text);
 }
 
+.text-preset-4-mobile-medium {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 100%;
+    word-spacing: 0;
+    color: var(--color-text);
+}
+
 .text-preset-5-mobile {
     font-size: 14px;
     line-height: 150%;
