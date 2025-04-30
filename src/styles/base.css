@@ -31,7 +31,7 @@ header {
 
 /* TOGGLE LIGHT/DARK MODE */
 [data-theme="light"] {
-  --color-bg: #ffffff;
+  --color-bg: #F4F6FA;
   --color-fg: #000000;
 }
 
@@ -78,6 +78,7 @@ header {
 
 body {
   background-color: var(--color-bg);
+  background-image: url("../../assets/images/pattern-background-mobile-light.svg");
   color: var(--color-fg);
 
   min-height: 100vh;
