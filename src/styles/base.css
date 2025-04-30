@@ -22,7 +22,7 @@ body {
   display: grid;
   flex-direction: column;
   min-height: 100vh;
-  place-items: ;
+  place-items: center;
 }
 
 @media (prefers-color-scheme: light) {
