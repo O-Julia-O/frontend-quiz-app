@@ -90,6 +90,16 @@ body {
   flex-direction: row;
 }
 
+.flex-row {
+  flex-direction: column;
+}
+
+/* QUIZ MENU */
+
+.quiz-menu {
+  margin: 30px 24px 0;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
