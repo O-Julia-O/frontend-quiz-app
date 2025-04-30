@@ -84,6 +84,13 @@ body {
   min-height: 100vh;
 }
 
+.quiz-menu__heading {
+  margin-bottom: 1rem;
+}
+
+.quiz-menu__paragraph {
+  margin-bottom: 2.5rem;
+}
 .flex {
   display: flex;
 }
