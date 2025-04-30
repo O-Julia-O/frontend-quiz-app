@@ -1,0 +1,62 @@
+@media (min-width: 640px) {
+    body {
+        background-image: url("../../assets/images/pattern-background-tablet-light.svg");
+        background-repeat: no-repeat;
+    }
+
+    header {
+        gap: 1rem;
+    }
+
+    header svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .checkbox-label {
+        width: 48px;
+        height: 28px;
+    }
+
+    .checkbox-label .ball {
+        width: 20px;
+        height: 20px;
+    }
+
+    .checkbox:checked + .checkbox-label .ball {
+        transform: translateX(20px);
+    }
+
+    .quiz-menu {
+        margin: 0;
+    }
+
+    .quiz-menu__heading {
+        font-size: 64px;
+        margin-top: 47px;
+    }
+
+    .quiz-menu__heading span {
+        margin-bottom: 4rem;
+        font-size: 64px;
+    }
+
+    .quiz-menu__paragraph {
+        line-height: 150%;
+        font-size: 20px;
+    }
+
+    .button {
+        border-radius: 24px;
+        font-size: 28px;
+    }
+
+    .button svg {
+        border-radius: 12px;
+        padding: 8px;
+        margin-right: 30px;
+        width: 56px;
+        height: 56px;
+    }
+   
+}

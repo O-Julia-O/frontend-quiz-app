@@ -25,7 +25,15 @@ header {
   padding: 1.5rem;
   justify-content: flex-end;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
+
+  max-width: 640px;
+
+  transition: max-width 0.2s ease-in-out;
+}
+
+header svg {
+  transition: all 0.2s ease-in-out;
 }
 /* HEADER ENDS*/
 
@@ -56,6 +64,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  transition: all 0.2s ease-in-out;
 }
 
 .checkbox-label .ball {
@@ -66,10 +76,11 @@ header {
   left: 4px;
   top: 4px;
   border-radius: 50%;
-  transition: transform 0.2s linear;
+  transition: all 0.2s ease-in-out;
 }
 
 .checkbox:checked + .checkbox-label .ball {
+  transition: all 0.2s ease-in-out;
   transform: translateX(10px);
 }
 
@@ -79,17 +90,31 @@ header {
 body {
   background-color: var(--color-bg);
   background-image: url("../../assets/images/pattern-background-mobile-light.svg");
+  background-repeat: no-repeat;
   color: var(--color-fg);
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   min-height: 100vh;
+
+  transition: background-image 0.2s ease-in-out;
+}
+
+main {
+  max-width: 640px;
+  transition: max-width 0.2s ease-in-out;
 }
 
 .quiz-menu__heading {
   margin-bottom: 1rem;
+  transition: all 0.2s ease-in-out;
 }
 
 .quiz-menu__paragraph {
   margin-bottom: 2.5rem;
+  transition: all 0.2s ease-in-out;
 }
 .flex {
   display: flex;
