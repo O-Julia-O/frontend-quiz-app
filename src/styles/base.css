@@ -25,6 +25,7 @@ header {
   padding: 1rem;
   justify-content: flex-end;
   align-items: center;
+  gap: 3px;
 }
 /* HEADER ENDS*/
 
@@ -45,7 +46,7 @@ header {
 }
 
 .checkbox-label {
-  background-color: #111;
+  background-color: #A729F5;
   width: 32px;
   height: 20px;
   border-radius: 50px;
