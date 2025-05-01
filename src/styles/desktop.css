@@ -1,0 +1,42 @@
+@media (min-width: 1024px) {
+    body {
+        background-image: url("../../assets/images/pattern-background-desktop-light.svg");
+        background-size: cover;
+        background-position: center;
+    }
+
+    main {
+        max-width: none;
+    }
+
+    header {
+        max-width: 1024px;
+        margin-top: 100px;
+        margin-bottom: 100px;
+        padding: 0;
+    }
+
+    .quiz-menu {
+        flex-direction: row;
+        
+        margin-right: 140px;
+        margin-left: 140px;
+
+    }
+
+    .quiz-menu__text {
+        margin-right: 128px
+    }
+
+    .quiz-menu__buttons {
+        width: 100%;
+    }
+
+    .quiz-menu__heading {
+        margin-top: 0;
+    }
+
+    .button svg {
+        margin: 24px;
+    }
+}

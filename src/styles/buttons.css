@@ -3,6 +3,7 @@
 }
 
 .button {
+    font-family: inherit;
     display: flex;
     background-color: white; /* Green */
     text-align: left;
