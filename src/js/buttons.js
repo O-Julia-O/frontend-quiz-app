@@ -70,6 +70,8 @@ document.addEventListener("DOMContentLoaded", () => {
 console.log(parsedData);
 console.log(quizzes);
 
+
+/* GET ALL QUESTIONS FROM THE CHOSEN TOPIC */
 function getQuestions(topic) {
   const quiz = quizzes.find((quiz) => quiz.title === topic);
   if (!quiz) {
@@ -78,6 +80,7 @@ function getQuestions(topic) {
   return quiz.questions;
 }
 
+/* Add icon to the header | QUESTION BLOCK */
 function addIcon(topic) {
   switch (topic) {
     case "HTML":
