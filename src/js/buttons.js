@@ -9,7 +9,7 @@ const quizButtons = document.querySelector(".quiz-menu__buttons");
 let parsedData = JSON.parse(JSON.stringify(data));
 const quizzes = parsedData.quizzes;
 
-//TODO -
+
 document.addEventListener("DOMContentLoaded", () => {
   const buttons = [
     document.querySelector("#html-btn"),
@@ -49,16 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // удалить кнопки
       quizButtons.innerHTML = ""; // очистить кнопки
 
-      // добавить кнопки
-      questions[0].options.forEach((option, index) => {
-        const button = document.createElement("button");
-        button.classList.add("button", "text-preset-4-mobile-medium");
-        button.innerHTML = `<span class="option-letter">${String.fromCharCode(
-          65 + index
-        )}</span> ${option}`;
-        button.setAttribute("data-index", index); // добавить атрибут с индексом
-        quizButtons.appendChild(button);
-      });
+      //FIXME добавить кнопки
+      questions[0].options.forEach((option, index) => createNewButtons(option, index)); // создать кнопки
 
       console.log(quizButtons); // кнопки
       if (quizButtons.hasChildNodes()) {
@@ -81,10 +73,58 @@ document.addEventListener("DOMContentLoaded", () => {
       const button = document.createElement("button");
       button.classList.add("button", "text-preset-4-mobile-medium", "next-btn");
       button.innerHTML = `Submit Answer`;
+
+      //ANCHOR - Submit Answer
+      button.addEventListener("click", () => {
+        const selectedButton = quizButtons.querySelector(".selected");
+        if (!selectedButton) {
+          alert("Please select an answer before submitting.");
+          return;
+        }
+
+        let textFromButton = selectedButton.textContent; // выбранная кнопка
+        const correctAnswer = questions[0].answer; // правильный ответ
+
+        if (textFromButton.includes(correctAnswer)) {
+          alert("Correct!"); // правильный ответ
+        } else {
+          alert("Incorrect!"); // неправильный ответ
+        }
+
+        // Удалить выделение со всех кнопок
+        quizButtons.querySelectorAll(".button").forEach((btn) => {
+          btn.classList.remove("selected");
+        });
+
+        // Показать следующий вопрос
+        questions.shift(); // удалить первый элемент массива
+        textBlock.innerHTML = `
+          <p class="text-preset-5-mobile">Question ${10 - questions.length} of 10</p>
+          <h2 class="text-preset-3-mobile-medium">${questions[0].question}</h2>
+        `;
+
+        quizButtons.innerHTML = ""; // очистить кнопки
+
+        //FIXME - добавить кнопки
+        questions[0].options.forEach((option, index) => createNewButtons(option, index)); // создать кнопки
+
+      });
       quizButtons.appendChild(button); // добавить кнопку "Submit Answer"
     });
   });
 });
+
+
+function createNewButtons(option, index) { 
+  const button = document.createElement("button");
+  button.classList.add("button", "text-preset-4-mobile-medium");
+  console.log(option); // кнопки
+  button.innerHTML = `<span class="option-letter">${String.fromCharCode(
+    65 + index
+  )}</span> ${option}`;
+  button.setAttribute("data-index", index); // добавить атрибут с индексом
+  quizButtons.appendChild(button);
+}
 
 /* GET ALL QUESTIONS FROM THE CHOSEN TOPIC */
 function getQuestions(topic) {
