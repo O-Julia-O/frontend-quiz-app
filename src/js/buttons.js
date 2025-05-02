@@ -5,12 +5,16 @@ const logo = document.querySelector(".logo");
 const textBlock = document.querySelector(".quiz-menu__text");
 const quizButtons = document.querySelector(".quiz-menu__buttons");
 
+let topic = "";
+let questions = [];
+let currentQuestionIndex = 0;
+
 /* JSON */
 let parsedData = JSON.parse(JSON.stringify(data));
 const quizzes = parsedData.quizzes;
 
-
 document.addEventListener("DOMContentLoaded", () => {
+  //!SECTION - DOMContentLoaded
   const buttons = [
     document.querySelector("#html-btn"),
     document.querySelector("#css-btn"),
@@ -18,58 +22,24 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("#access-btn"),
   ].filter(Boolean); // уберёт null
 
-  let topic = "";
-  let questions = [];
-
   buttons.forEach((btn) => {
     btn.addEventListener("click", (event) => {
       topic = event.target.textContent;
       questions = getQuestions(topic);
 
-      // в header добавить текст "Тема: {topic}"
-      header.style.justifyContent = "space-between"; // выровнять по краям
-      logo.style.display = "flex"; // показать логотип
-
-      header.querySelector("img").style.marginRight = "1rem";
-      header.querySelector("h1").textContent = `${topic}`; // добавить текст в заголовок
-      header.querySelector("h1").classList.add("text-preset-4-mobile-medium"); // add style for h1
-      logo.style.alignItems = "center"; // выровнять логотип по центру
-
-      addIcon(topic); // добавить иконку темы
-      header.querySelector("img").style.padding = "5px";
-      header.querySelector("img").style.borderRadius = "12px";
-
-      //Удалить текст
-      textBlock.innerHTML = ""; // очистить текстовый блок
-      textBlock.innerHTML = `
-        <p class="text-preset-5-mobile">Question 1 of 10</p>
-        <h2 class="text-preset-3-mobile-medium">${questions[0].question}</h2>
-      `;
+      // поменять header по теме вопроса. 
+      createNewQuestionWindow(topic); // создать окно с вопросами
 
       // удалить кнопки
       quizButtons.innerHTML = ""; // очистить кнопки
 
-      //FIXME добавить кнопки
-      questions[0].options.forEach((option, index) => createNewButtons(option, index)); // создать кнопки
+      //добавить кнопки
+      questions[currentQuestionIndex].options.forEach((option, index) =>
+        createNewButtons(option, index)
+      ); // создать кнопки
 
       console.log(quizButtons); // кнопки
-      if (quizButtons.hasChildNodes()) {
-        const children = Array.from(quizButtons.children);
-      
-        children.forEach((btn) => {
-          btn.classList.add("text-preset-4-mobile-medium");
-          btn.classList.remove("selected");
-      
-          btn.addEventListener("click", (event) => {
-            // Удалить выделение со всех
-            children.forEach(b => b.classList.remove("selected"));
-            
-            // Добавить выделение на нажатую
-            btn.classList.add("selected");
-          });
-        });
-      }
-      
+
       const button = document.createElement("button");
       button.classList.add("button", "text-preset-4-mobile-medium", "next-btn");
       button.innerHTML = `Submit Answer`;
@@ -83,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         let textFromButton = selectedButton.textContent; // выбранная кнопка
-        const correctAnswer = questions[0].answer; // правильный ответ
+        const correctAnswer = questions[currentQuestionIndex].answer; // правильный ответ
 
         if (textFromButton.includes(correctAnswer)) {
           alert("Correct!"); // правильный ответ
@@ -97,25 +67,49 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         // Показать следующий вопрос
-        questions.shift(); // удалить первый элемент массива
+        currentQuestionIndex++; // удалить первый элемент массива
         textBlock.innerHTML = `
-          <p class="text-preset-5-mobile">Question ${10 - questions.length} of 10</p>
-          <h2 class="text-preset-3-mobile-medium">${questions[0].question}</h2>
+          <p class="text-preset-5-mobile">Question ${
+            10 - questions.length
+          } of 10</p>
+          <h2 class="text-preset-3-mobile-medium">${
+            questions[currentQuestionIndex].question
+          }</h2>
         `;
 
         quizButtons.innerHTML = ""; // очистить кнопки
 
-        //FIXME - добавить кнопки
-        questions[0].options.forEach((option, index) => createNewButtons(option, index)); // создать кнопки
-
+        //добавить кнопки
+        questions[currentQuestionIndex].options.forEach((option, index) =>
+          createNewButtons(option, index)
+        ); // создать кнопки
       });
       quizButtons.appendChild(button); // добавить кнопку "Submit Answer"
     });
   });
 });
 
+//!SECTION - Create new question window
+function createNewQuestionWindow(topic) {
+  header.style.justifyContent = "space-between"; // выровнять по краям
+  logo.style.display = "flex"; // показать логотип
+  header.querySelector("img").style.marginRight = "1rem";
+  header.querySelector("h1").textContent = `${topic}`; // добавить текст в заголовок
+  header.querySelector("h1").classList.add("text-preset-4-mobile-medium"); // add style for h1
+  logo.style.alignItems = "center"; // выровнять логотип по центру
+  addIcon(topic); // добавить иконку темы
+  header.querySelector("img").style.padding = "5px";
+  header.querySelector("img").style.borderRadius = "12px";
 
-function createNewButtons(option, index) { 
+  //Удалить текст
+  textBlock.innerHTML = ""; // очистить текстовый блок
+  textBlock.innerHTML = `
+    <p class="text-preset-5-mobile">Question ${currentQuestionIndex} of 10</p>
+    <h2 class="text-preset-3-mobile-medium">${questions[currentQuestionIndex].question}</h2>
+  `;
+}
+
+function createNewButtons(option, index) {
   const button = document.createElement("button");
   button.classList.add("button", "text-preset-4-mobile-medium");
   console.log(option); // кнопки
@@ -124,6 +118,23 @@ function createNewButtons(option, index) {
   )}</span> ${option}`;
   button.setAttribute("data-index", index); // добавить атрибут с индексом
   quizButtons.appendChild(button);
+
+  if (quizButtons.hasChildNodes()) {
+    const children = Array.from(quizButtons.children);
+
+    children.forEach((btn) => {
+      btn.classList.add("text-preset-4-mobile-medium");
+      btn.classList.remove("selected");
+
+      btn.addEventListener("click", (event) => {
+        // Удалить выделение со всех
+        children.forEach((b) => b.classList.remove("selected"));
+
+        // Добавить выделение на нажатую
+        btn.classList.add("selected");
+      });
+    });
+  }
 }
 
 /* GET ALL QUESTIONS FROM THE CHOSEN TOPIC */
