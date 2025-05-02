@@ -3,6 +3,8 @@ import data from '../../data.json';
 
 const header = document.querySelector("header");
 const logo = document.querySelector(".logo");
+const textBlock = document.querySelector(".quiz-menu__text");
+const quizButtons = document.querySelector(".quiz-menu__buttons");
 let parsedData = JSON.parse(JSON.stringify(data));
 const quizzes = parsedData.quizzes;
 
@@ -60,14 +62,24 @@ document.addEventListener('DOMContentLoaded', () => {
       header.querySelector("img").style.padding = "5px"; 
       header.querySelector("img").style.borderRadius = "12px";  
 
-
-      /* header.querySelector("img").style.backgroundColor = "red"; */
-
-
-
-      // и иконку с темой
-
       //Удалить текст
+      textBlock.innerHTML = ''; // очистить текстовый блок
+      textBlock.innerHTML = `
+        <p class="text-preset-5-mobile">Question 1 of 10</p>
+        <h2 class="text-preset-3-mobile-medium">${questions[0].question}</h2>
+      `;
+
+      // удалить кнопки
+      quizButtons.innerHTML = ''; // очистить кнопки
+      // добавить кнопки
+      questions[0].options.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.classList.add("button", "text-preset-4-mobile-medium");
+        button.innerHTML = `<span class="option-letter">${String.fromCharCode(65 + index)}</span> ${option}`;
+        button.setAttribute("data-index", index); // добавить атрибут с индексом
+        quizButtons.appendChild(button);
+      });
+
       //вместо текста добавить вопрос
       //заменить текст в кнопках
       //заменить картинку в кнопках
