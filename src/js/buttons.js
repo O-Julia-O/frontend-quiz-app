@@ -4,6 +4,8 @@ const header = document.querySelector("header");
 const logo = document.querySelector(".logo");
 const textBlock = document.querySelector(".quiz-menu__text");
 const quizButtons = document.querySelector(".quiz-menu__buttons");
+
+/* JSON */
 let parsedData = JSON.parse(JSON.stringify(data));
 const quizzes = parsedData.quizzes;
 
@@ -23,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", (event) => {
       topic = event.target.textContent;
       questions = getQuestions(topic);
-      console.log(questions);
 
       // в header добавить текст "Тема: {topic}"
       header.style.justifyContent = "space-between"; // выровнять по краям
@@ -35,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
       logo.style.alignItems = "center"; // выровнять логотип по центру
 
       addIcon(topic); // добавить иконку темы
-
       header.querySelector("img").style.padding = "5px";
       header.querySelector("img").style.borderRadius = "12px";
 
@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // удалить кнопки
       quizButtons.innerHTML = ""; // очистить кнопки
+
       // добавить кнопки
       questions[0].options.forEach((option, index) => {
         const button = document.createElement("button");
@@ -59,6 +60,24 @@ document.addEventListener("DOMContentLoaded", () => {
         quizButtons.appendChild(button);
       });
 
+      console.log(quizButtons); // кнопки
+      if (quizButtons.hasChildNodes()) {
+        const children = Array.from(quizButtons.children);
+      
+        children.forEach((btn) => {
+          btn.classList.add("text-preset-4-mobile-medium");
+          btn.classList.remove("selected");
+      
+          btn.addEventListener("click", (event) => {
+            // Удалить выделение со всех
+            children.forEach(b => b.classList.remove("selected"));
+            
+            // Добавить выделение на нажатую
+            btn.classList.add("selected");
+          });
+        });
+      }
+      
       const button = document.createElement("button");
       button.classList.add("button", "text-preset-4-mobile-medium", "next-btn");
       button.innerHTML = `Submit Answer`;
@@ -66,10 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
-console.log(parsedData);
-console.log(quizzes);
-
 
 /* GET ALL QUESTIONS FROM THE CHOSEN TOPIC */
 function getQuestions(topic) {
