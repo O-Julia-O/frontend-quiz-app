@@ -20,19 +20,19 @@
     padding: 5px;
 }
 
-.button .html-btn {
+.button .html-btn, .html-btn {
     background-color: #FFF5ED; 
 }
 
-.button .css-btn{
+.button .css-btn, .css-btn{
     background-color: #E0FDEF; 
 }
 
-.button .js-btn{
+.button .js-btn, .js-btn{
     background-color: #EBF0FF; 
 }
 
-.button .access-btn{
+.button .access-btn, .access-btn{
     background-color: #F6E7FF; 
 }
 
