@@ -80,6 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
         quizButtons.appendChild(button);
       });
 
+      const button = document.createElement("button");
+      button.classList.add("button", "text-preset-4-mobile-medium", "next-btn");
+      button.innerHTML = `Submit Answer`;
+      quizButtons.appendChild(button); // добавить кнопку "Submit Answer"
+
       //вместо текста добавить вопрос
       //заменить текст в кнопках
       //заменить картинку в кнопках
