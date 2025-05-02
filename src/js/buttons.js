@@ -87,7 +87,6 @@ function createSubmitButton() {
   button.classList.add("button", "text-preset-4-mobile-medium", "next-btn");
   button.innerHTML = `Submit Answer`;
 
-  //ANCHOR - Submit Answer
   button.addEventListener("click", () => {
     const selectedButton = quizButtons.querySelector(".selected");
     if (!selectedButton) {
@@ -95,10 +94,9 @@ function createSubmitButton() {
       return;
     }
 
-    let textFromButton = selectedButton.textContent; // выбранная кнопка
     const correctAnswer = questions[currentQuestionIndex].answer; // правильный ответ
 
-    checkAnswer(textFromButton, correctAnswer); // проверить ответ
+    checkAnswer(selectedButton, correctAnswer); // проверить ответ
 
     // Удалить выделение со всех кнопок
     deleteSelected(); // удалить выделение
@@ -138,11 +136,15 @@ function deleteAllChildren(node) {
   node.innerHTML = ""; // очистить все дочерние элементы
 }
 
+//!SECTION - Check answer
 function checkAnswer(selectedButton, correctAnswer) {
-  if (selectedButton.includes(correctAnswer)) {
-    alert("Correct!"); // правильный ответ
+  let textFromButton = selectedButton.textContent; // выбранная кнопка
+  if (textFromButton.includes(correctAnswer)) {
+    /* alert("Correct!"); // правильный ответ */
+    selectedButton.classList.add("correct--answer"); // добавить класс для правильного ответа
   } else {
-    alert("Incorrect!"); // неправильный ответ
+    /* alert("Incorrect!"); // неправильный ответ */
+    selectedButton.classList.add("incorrect--answer"); // добавить класс для правильного ответа
   }
 }
 
