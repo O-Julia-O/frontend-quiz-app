@@ -8,9 +8,8 @@ const quizButtons = document.querySelector(".quiz-menu__buttons");
 let parsedData = JSON.parse(JSON.stringify(data));
 const quizzes = parsedData.quizzes;
 
-
+//TODO - 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log("3245367890");
   const buttons = [
     document.querySelector("#html-btn"),
     document.querySelector("#css-btn"),
@@ -23,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", (event) => {
-      console.log("kjfkjdjgl");
       topic = event.target.textContent;
       questions = getQuestions(topic);
       console.log(questions);
@@ -84,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
       button.classList.add("button", "text-preset-4-mobile-medium", "next-btn");
       button.innerHTML = `Submit Answer`;
       quizButtons.appendChild(button); // добавить кнопку "Submit Answer"
-      
+
     });
   });
 });
