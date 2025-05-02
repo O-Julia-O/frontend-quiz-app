@@ -67,3 +67,7 @@
     justify-content: center;
     background-color: rgba(167, 41, 245, 1);
 }
+
+.selected {
+    border: 2px solid rgba(167, 41, 245, 1);
+}
