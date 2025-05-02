@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
       createNewQuestionWindow(topic); // создать окно с вопросами
 
       // удалить кнопки
-      quizButtons.innerHTML = ""; // очистить кнопки
+      deleteAllChildren(quizButtons); // очистить кнопки
 
       //добавить кнопки
       questions[currentQuestionIndex].options.forEach((option, index) =>
@@ -61,17 +61,18 @@ document.addEventListener("DOMContentLoaded", () => {
         deleteSelected(); // удалить выделение
 
         // Показать следующий вопрос
-        currentQuestionIndex++; // удалить первый элемент массива
+        currentQuestionIndex++;
         textBlock.innerHTML = `
           <p class="text-preset-5-mobile">Question ${
-            10 - questions.length
+            11 - questions.length
           } of 10</p>
           <h2 class="text-preset-3-mobile-medium">${
             questions[currentQuestionIndex].question
           }</h2>
         `;
 
-        quizButtons.innerHTML = ""; // очистить кнопки
+        // удалить кнопки
+        deleteAllChildren(quizButtons); // очистить кнопки
 
         //добавить кнопки
         questions[currentQuestionIndex].options.forEach((option, index) =>
@@ -138,6 +139,10 @@ function getQuestions(topic) {
     throw new Error(`Quiz with topic ${topic} not found`);
   }
   return quiz.questions;
+}
+
+function deleteAllChildren(node) {
+  node.innerHTML = ""; // очистить все дочерние элементы
 }
 
 function checkAnswer(selectedButton, correctAnswer) {
