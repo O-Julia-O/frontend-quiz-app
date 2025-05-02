@@ -29,9 +29,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // в header добавить текст "Тема: {topic}"
       header.style.justifyContent = "space-between"; // выровнять по краям
-      logo.style.display = "block"; // показать логотип
+      logo.style.display = "flex"; // показать логотип
       header.querySelector("img").src = quizzes[0].icon; // показать заголовок
+      header.querySelector("img").style.marginRight = "1rem"; // убрать отступ
       header.querySelector("h1").textContent = `${topic}`; // добавить текст в заголовок
+      header.querySelector("h1").classList.add("text-preset-4-mobile-medium"); // add style for h1
+      logo.style.alignItems = "center"; // выровнять логотип по центру
+
       // и иконку с темой
 
       //Удалить текст

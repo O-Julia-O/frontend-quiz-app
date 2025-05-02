@@ -24,7 +24,6 @@ header {
   width: 100%;
   padding: 1.5rem;
   justify-content: flex-end;
-  align-items: center;
   gap: 0.5rem;
 
   max-width: 640px;
@@ -46,6 +45,11 @@ header svg {
 [data-theme="dark"] {
   --color-bg: #000000;
   --color-fg: #ffffff;
+}
+
+.toggle {
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .checkbox {
