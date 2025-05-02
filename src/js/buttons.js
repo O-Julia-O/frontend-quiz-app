@@ -34,26 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
       header.querySelector("h1").classList.add("text-preset-4-mobile-medium"); // add style for h1
       logo.style.alignItems = "center"; // выровнять логотип по центру
 
-      switch (topic) {
-        case "HTML":
-          header.querySelector("img").src = quizzes[0].icon; // иконка темы
-          header.querySelector("img").classList.add("html-btn"); // добавить класс для иконки
-          break;
-        case "CSS":
-          header.querySelector("img").src = quizzes[1].icon; // иконка темы
-          header.querySelector("img").classList.add("css-btn"); // цвет текста
-          break;
-        case "JavaScript":
-          header.querySelector("img").src = quizzes[2].icon; // иконка темы
-          header.querySelector("img").classList.add("js-btn"); // цвет текста
-          break;
-        case "Accessibility":
-          header.querySelector("img").src = quizzes[3].icon; // иконка темы
-          header.querySelector("img").classList.add("access-btn"); // цвет текста
-          break;
-        default:
-          console.error("Unknown topic:", topic);
-      }
+      addIcon(topic); // добавить иконку темы
 
       header.querySelector("img").style.padding = "5px";
       header.querySelector("img").style.borderRadius = "12px";
@@ -95,4 +76,27 @@ function getQuestions(topic) {
     throw new Error(`Quiz with topic ${topic} not found`);
   }
   return quiz.questions;
+}
+
+function addIcon(topic) {
+  switch (topic) {
+    case "HTML":
+      header.querySelector("img").src = quizzes[0].icon; // иконка темы
+      header.querySelector("img").classList.add("html-btn"); // добавить класс для иконки
+      break;
+    case "CSS":
+      header.querySelector("img").src = quizzes[1].icon; // иконка темы
+      header.querySelector("img").classList.add("css-btn"); // цвет текста
+      break;
+    case "JavaScript":
+      header.querySelector("img").src = quizzes[2].icon; // иконка темы
+      header.querySelector("img").classList.add("js-btn"); // цвет текста
+      break;
+    case "Accessibility":
+      header.querySelector("img").src = quizzes[3].icon; // иконка темы
+      header.querySelector("img").classList.add("access-btn"); // цвет текста
+      break;
+    default:
+      console.error("Unknown topic:", topic);
+  }
 }
