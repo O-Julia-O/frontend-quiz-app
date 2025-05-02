@@ -51,3 +51,11 @@
 .access-btn {
     fill: #A729F5;
 }
+
+.option-letter {
+    color: rgba(98, 108, 127, 1);
+    padding: 11px 14px;
+    background-color: rgba(244, 246, 250, 1);
+    border-radius: 12px;
+    margin: 1rem;
+}
