@@ -55,16 +55,10 @@ document.addEventListener("DOMContentLoaded", () => {
         let textFromButton = selectedButton.textContent; // выбранная кнопка
         const correctAnswer = questions[currentQuestionIndex].answer; // правильный ответ
 
-        if (textFromButton.includes(correctAnswer)) {
-          alert("Correct!"); // правильный ответ
-        } else {
-          alert("Incorrect!"); // неправильный ответ
-        }
+        checkAnswer(textFromButton, correctAnswer); // проверить ответ
 
         // Удалить выделение со всех кнопок
-        quizButtons.querySelectorAll(".button").forEach((btn) => {
-          btn.classList.remove("selected");
-        });
+        deleteSelected(); // удалить выделение
 
         // Показать следующий вопрос
         currentQuestionIndex++; // удалить первый элемент массива
@@ -144,6 +138,21 @@ function getQuestions(topic) {
     throw new Error(`Quiz with topic ${topic} not found`);
   }
   return quiz.questions;
+}
+
+function checkAnswer(selectedButton, correctAnswer) {
+  if (selectedButton.includes(correctAnswer)) {
+    alert("Correct!"); // правильный ответ
+  } else {
+    alert("Incorrect!"); // неправильный ответ
+  }
+}
+
+function deleteSelected() {
+  const selectedButton = quizButtons.querySelector(".selected");
+  if (selectedButton) {
+    selectedButton.classList.remove("selected");
+  }
 }
 
 /* Add icon to the header | QUESTION BLOCK */
