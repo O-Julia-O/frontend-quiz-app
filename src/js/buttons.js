@@ -95,30 +95,12 @@ function createSubmitButton() {
     }
 
     const correctAnswer = questions[currentQuestionIndex].answer; // правильный ответ
-
     checkAnswer(selectedButton, correctAnswer); // проверить ответ
 
     // Удалить выделение со всех кнопок
     deleteSelected(); // удалить выделение
 
-    // Показать следующий вопрос
-    currentQuestionIndex++;
-    textBlock.innerHTML = `
-      <p class="text-preset-5-mobile">Question ${currentQuestionIndex+1} of 10</p>
-      <h2 class="text-preset-3-mobile-medium">${
-        questions[currentQuestionIndex].question
-      }</h2>
-    `;
-
-    // удалить кнопки
-    deleteAllChildren(quizButtons); // очистить кнопки
-
-    //добавить кнопки
-    questions[currentQuestionIndex].options.forEach((option, index) => {
-      createNewButtons(option, index);
-    });
-
-    createSubmitButton(); // создать кнопку "Submit Answer"
+    showNextQuestion();
   });
   quizButtons.appendChild(button); // добавить кнопку "Submit Answer"
 }
@@ -136,7 +118,7 @@ function deleteAllChildren(node) {
   node.innerHTML = ""; // очистить все дочерние элементы
 }
 
-//!SECTION - Check answer
+//SECTION - Check answer
 function checkAnswer(selectedButton, correctAnswer) {
   let textFromButton = selectedButton.textContent; // выбранная кнопка
   if (textFromButton.includes(correctAnswer)) {
@@ -145,6 +127,23 @@ function checkAnswer(selectedButton, correctAnswer) {
   } else {
     /* alert("Incorrect!"); // неправильный ответ */
     selectedButton.classList.add("incorrect--answer"); // добавить класс для правильного ответа
+  }
+}
+
+function showNextQuestion() {
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+    textBlock.innerHTML = `
+      <p class="text-preset-5-mobile">Question ${currentQuestionIndex + 1} of 10</p>
+      <h2 class="text-preset-3-mobile-medium">${questions[currentQuestionIndex].question}</h2>
+    `;
+    deleteAllChildren(quizButtons); // очистить кнопки
+    questions[currentQuestionIndex].options.forEach((option, index) => {
+      createNewButtons(option, index);
+    });
+    createSubmitButton(); // создать кнопку "Submit Answer"
+  } else {
+    alert("Quiz completed!"); // завершение викторины
   }
 }
 
