@@ -12,27 +12,28 @@
     border-radius: 12px;
 
     filter: drop-shadow(0 0 0.75rem #8fa0c136);
+    padding: 1rem;
 }
 
 .button svg {
     border-radius: 6px;
-    margin: 1rem;
+    margin-right: 1rem;
     padding: 5px;
 }
 
-.button .html-btn {
+.button .html-btn, .html-btn {
     background-color: #FFF5ED; 
 }
 
-.button .css-btn{
+.button .css-btn, .css-btn{
     background-color: #E0FDEF; 
 }
 
-.button .js-btn{
+.button .js-btn, .js-btn{
     background-color: #EBF0FF; 
 }
 
-.button .access-btn{
+.button .access-btn, .access-btn{
     background-color: #F6E7FF; 
 }
 
@@ -50,4 +51,23 @@
 
 .access-btn {
     fill: #A729F5;
+}
+
+.option-letter {
+    color: rgba(98, 108, 127, 1);
+    padding: 11px 14px;
+    background-color: rgba(244, 246, 250, 1);
+    border-radius: 12px;
+    margin-right: 1rem;
+}
+
+.next-btn {
+    padding: 20px 0;
+    color: white;
+    justify-content: center;
+    background-color: rgba(167, 41, 245, 1);
+}
+
+.selected {
+    border: 2px solid rgba(167, 41, 245, 1);
 }

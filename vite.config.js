@@ -9,5 +9,5 @@ export default defineConfig({
   build: {
     outDir: 'dist'   // папка для продакшн-сборки
   }, 
-  base: '/frontend-quiz-app',        // базовый путь для приложения
+  base: '/',        // базовый путь для приложения
 });
