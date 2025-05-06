@@ -89,7 +89,7 @@ function createSubmitButton() {
 
   button.addEventListener("click", () => {
     const selectedButton = quizButtons.querySelector(".selected");
-    if (!selectedButton) {
+    if (!selectedButton && !button.classList.contains("next-btn")) {
       alert("Please select an answer before submitting.");
       return;
     }
@@ -100,8 +100,11 @@ function createSubmitButton() {
     // Удалить выделение со всех кнопок
     deleteSelected(); // удалить выделение
 
-    showNextQuestion();
+    const buttonNext = document.querySelector(".next-btn");
+    buttonNext.textContent = "Next Question"; // изменить текст кнопки на "Next Question"
+    buttonNext.addEventListener("click", () => showNextQuestion()); // показать следующий вопрос
   });
+
   quizButtons.appendChild(button); // добавить кнопку "Submit Answer"
 }
 
@@ -118,7 +121,7 @@ function deleteAllChildren(node) {
   node.innerHTML = ""; // очистить все дочерние элементы
 }
 
-//SECTION - Check answer
+
 function checkAnswer(selectedButton, correctAnswer) {
   let textFromButton = selectedButton.textContent; // выбранная кнопка
   if (textFromButton.includes(correctAnswer)) {
