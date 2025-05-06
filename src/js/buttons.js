@@ -68,7 +68,7 @@ function createNewQuestionWindow(topic) {
 function createNewButtons(option, index) {
   const button = document.createElement("button");
   button.classList.add("button", "text-preset-4-mobile-medium");
-  button.innerHTML = `<span class="option-letter">${String.fromCharCode(65 + index)}</span> ${option}`;
+  button.innerHTML = `<span class="option-letter">${String.fromCharCode(65 + index)}</span> ${escapeHTML(option)}`;
   button.setAttribute("data-index", index);
 
   button.addEventListener("click", () => {
@@ -179,4 +179,11 @@ function addIcon(topic) {
     default:
       console.error("Unknown topic:", topic);
   }
+}
+
+function escapeHTML(str) {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 }
